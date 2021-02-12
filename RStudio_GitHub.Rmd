@@ -1,0 +1,52 @@
+---
+title: "RStudio to GitHub"
+author: "Simon Tye"
+date: "2021.02.11"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+There are several ways to connect RStudio and GitHub and this is just one method that worked for me. You can do it all from the Terminal if you’re fancy. In short, GitHub keeps track of your edits to code (version control) and lets you collaborate with others on code.
+
+## Create a GitHub account
+
+As a student, you can sign up for a free Pro account that allows you to have an unlimited number of repositories.
+
+https://education.github.com/discount_requests/student_application
+
+## Create a repository
+
+1. Go to `Repositories -> New`
+  a. Repository name
+    i. Name of your project
+  b. Public vs. Private
+    i.Either one. I usually male them private and give people access while something is in progress.
+  c. Add a README file
+    i. Check thix box. A README file is like the cover page of your projet.
+  d. Add .gitignore
+    i. Check this box. A gitignore file tells the computer what not to upload (e.g., large files, working files)
+    ii. .gitignore template: R
+  e. Choose a license
+    i. Dealer’s choice. The MIT License is utopian bliss, anyone can use it as long as they’re accredited and not liable for what it’s used for.
+
+2. Once you have created a new repository, go to that repository in your web browser and click `Code`.
+iii.	In the dropdown menu, make sure `HTTPS` is selected and click the `Clipboard`. This will copy the repository URL to your computer’s memory.
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+[RStudio](https://rstudio.com)
+
+![**Figure 1.** How to adjust an artboard (i.e., canvas) in Adobe Illustrator CC 2020.](/Users/simontye/Documents/Research/Service/ASN_GC/Blogs/201911/Tye_201911_Figure1.png)
+
+
+
+
+## RStudio
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
