@@ -3,10 +3,29 @@ title: "RStudio to GitHub"
 author: "Simon Tye"
 date: "2021.02.11"
 output: pdf_document
+fig_caption: yes
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = TRUE, echo = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# Load library
+library(knitr)
+
+# Create function
+fig <- local({
+    i <- 0
+    ref <- list()
+    list(
+        cap=function(refName, text) {
+            i <<- i + 1
+            ref[[refName]] <<- i
+            paste("Figure ", i, ": ", text, sep="")
+        },
+        ref=function(refName) {
+            ref[[refName]]
+        })
+})
 ```
 
 There are several ways to connect RStudio and GitHub and this is just one method that worked for me. You can do it all from the Terminal if you’re fancy. In short, GitHub keeps track of your edits to code (version control) and lets you collaborate with others on code.
@@ -17,15 +36,17 @@ As a student, you can sign up for a free Pro account that allows you to have an 
 
 https://education.github.com/discount_requests/student_application
 
-## Create a repository
+## Create a GitHub repository
 
-![Creating a new GitHub repository.](/Users/simontye/Documents/Research/Projects/GitHub/image_new_repository.png)
+```{r, fig.align = "center", out.width = "75%", fig.cap = paste("Creating a new GitHub repository."), echo = FALSE}
+include_graphics("/Users/simontye/Documents/Research/Projects/GitHub/image_new_repository.png")
+```
 
 1. Go to `Repositories -> New`
   a. Repository name
       i. Name of your project
   b. Public vs. Private
-      i.Either one. I usually male them private and give people access while something is in progress.
+      i. Either one. I usually male them private and give people access while something is in progress.
   c. Add a README file
       i. Check thix box. A README file is like the cover page of your projet.
   d. Add .gitignore
@@ -34,8 +55,8 @@ https://education.github.com/discount_requests/student_application
   e. Choose a license
       i. Dealer’s choice. The MIT License is utopian bliss, anyone can use it as long as they’re accredited and not liable for what it’s used for.
 2. Once you have created a new repository, go to that repository in your web browser and click `Code`.
-  a.	In the dropdown menu, make sure `HTTPS` is selected and click the `Clipboard`. This will copy the repository URL to your computer’s memory.
-  
+  a. In the dropdown menu, make sure `HTTPS` is selected and click the `Clipboard`. This will copy the repository URL to your computer’s memory.
+
 ## Create a RStudio project
 
 1. Open RStudio and go to `File -> New Project - > Version Control -> Git`
@@ -47,6 +68,34 @@ https://education.github.com/discount_requests/student_application
       iii. Click `Browse` and go to where you save your projects on your computer.
   d. Click “Create Project”
 
-![Creating a new RStudio project](/Users/simontye/Documents/Research/Projects/GitHub/image_new_project.png)
+```{r, fig.align = "center", out.width = "75%", fig.cap = paste("Creating a new RStudio project."), echo = FALSE}
+include_graphics("/Users/simontye/Documents/Research/Projects/GitHub/image_new_project.png")
+```
 
-In the lower right, you will see the README and gitignore files that GitHub created when you made the repository. Next, you will want to create a new file to work with in R. In this case, I am going to create this Rmd file.
+## Create a new R file
+In the lower right, you will see the README and gitignore files that were created by GitHub when you made the repository. The next logical step is to create a new R or Rmd file to work with. In this case, I am going to create this Rmd file and save it as `RStudio_GitHub.Rmd`. After saving the file in the project directory on your computer, click on `Git` at the top of the upper right corner panel. You should notice that the new files you created (i.e,, this Rmd file and the Rproject file) have a `?` next to them. That means they are new files and `Git` doesn't know what to do with them. If you click the box under `Staged`, the `?` will change to an `A`, which stands for add. There are similar symbols for modify `M`, delete `D`, rename `R`, etc.
+
+```{r, fig.align = "center", out.width = "75%", fig.cap = paste("Creating a new R file."), echo = FALSE}
+include_graphics("/Users/simontye/Documents/Research/Projects/GitHub/image_new_file.png")
+```
+
+## Sync RStudio to GitHub
+After selecting `Staged` for your new files, click `Commit`. This will bring up a window on your computer that shows your files and edits to the code. In the upper right up `Commit message`, type a short description of what you did. In this case, I'll type `added intro`. Once this has finished running in the new window that appears, click `Close`. Under `Git` in the upper right panel of RStudio, you'll notice that it now says `Your branch is ahead of 'origin/main' by 1 commit`. This means that you've submitted changes to your code on your computer, but haven't passed that message along to GitHub. To inform GitHub you want these changes to go online, click the small green arrow that says `Push`. After that runs, go to your web browser and pull up your GitHub repository. You should see that the new files have been uploaded. In addition to keeping your files backed up online, GitHub keeps track of all changes to your code via version control.
+
+```{r, fig.align = "center", out.width = "75%", fig.cap = paste("Syncing RStudio to GitHub."), echo = FALSE}
+include_graphics("/Users/simontye/Documents/Research/Projects/GitHub/image_commit.png")
+```
+
+## Version Control
+
+To look back on previous versions of your code, go to XXX. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder.
+
+## Collaborators
+
+To provide someone access to your project, go to XXX. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder. Placeholder.
+
+```{r, fig.align = "center", out.width = "75%", fig.cap = paste("Adding collaborators on GitHub"), echo = FALSE}
+include_graphics("/Users/simontye/Documents/Research/Projects/GitHub/image_collaborators.png")
+```
+
+That's it!
